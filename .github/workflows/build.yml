@@ -2,13 +2,16 @@ name: Build and publish NuGet package
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - 'v*.*.*'
 
 permissions:
   contents: read
 
 jobs:
   publish:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v')
     runs-on: windows-latest
     environment: production
     permissions:
@@ -27,24 +30,28 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore Notifier.sln
 
-      - name: Run tests
-        run: dotnet test tests/Notifier.Tests/Notifier.Tests.csproj --configuration Release --no-restore
+      - name: Build solution (Release)
+        run: dotnet build Notifier.sln --configuration Release --no-restore
+
+      - name: Run automated tests
+        run: dotnet test tests/Notifier.Tests/Notifier.Tests.csproj --configuration Release --no-build --verbosity normal
 
       - name: Build NuGet packages
-        run: dotnet pack Notifier.sln --configuration Release --no-restore --output artifacts
+        run: dotnet pack Notifier.sln --configuration Release --no-build --output artifacts
 
       - name: Exchange GitHub OIDC token for NuGet key
         uses: NuGet/login@v1
         id: nuget-login
+        continue-on-error: true
         with:
           user: HiteshBhanushali-Techmaster
 
       - name: Publish packages
         env:
-          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
-        run: dotnet nuget push "artifacts/SanketDesk.*.nupkg" --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY || secrets.NUGET_API_KEY }}
+        run: dotnet nuget push "artifacts/SanketDesk.*.nupkg" --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
 
       - name: Publish symbols
         env:
-          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
-        run: dotnet nuget push "artifacts/SanketDesk.*.snupkg" --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY || secrets.NUGET_API_KEY }}
+        run: dotnet nuget push "artifacts/SanketDesk.*.snupkg" --api-key $env:NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
