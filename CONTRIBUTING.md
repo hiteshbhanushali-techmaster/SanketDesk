@@ -51,7 +51,7 @@ dotnet build Notifier.sln -c Release
 ### Running the Test Suite
 ```powershell
 # Execute automated tests
-dotnet test tests/Notifier.Tests/Notifier.Tests.csproj -c Release
+dotnet test tests/SanketDesk.Tests/SanketDesk.Tests.csproj -c Release
 ```
 
 ### Running the PropertyGrid Configurator Studio

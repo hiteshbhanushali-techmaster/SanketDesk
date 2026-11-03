@@ -1,3 +1,4 @@
+using SanketDesk;
 #nullable enable
 using System;
 using System.ComponentModel;
@@ -17,12 +18,12 @@ namespace ConfiguratorSample.Models
         {
             return new StandardValuesCollection(new[]
             {
-                Notifier.NotificationTemplateNames.ModernCard,
-                Notifier.NotificationTemplateNames.MinimalBar,
-                Notifier.NotificationTemplateNames.SolidAccent,
-                Notifier.NotificationTemplateNames.SplitPill,
-                Notifier.NotificationTemplateNames.ActionPrompt,
-                Notifier.NotificationTemplateNames.WindowsFluent
+                NotificationTemplateNames.ModernCard,
+                NotificationTemplateNames.MinimalBar,
+                NotificationTemplateNames.SolidAccent,
+                NotificationTemplateNames.SplitPill,
+                NotificationTemplateNames.ActionPrompt,
+                NotificationTemplateNames.WindowsFluent
             });
         }
     }

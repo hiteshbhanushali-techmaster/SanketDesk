@@ -25,7 +25,7 @@ dotnet add package SanketDesk.NetFramework --version 1.0.0
 Initialize SanketDesk once during host application startup (e.g. in your `MainForm` constructor or `Program.Main`):
 
 ```csharp
-using Notifier;
+using SanketDesk;
 using System;
 using System.Windows.Forms;
 

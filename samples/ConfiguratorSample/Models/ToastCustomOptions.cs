@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using Notifier;
+using SanketDesk;
 
 namespace ConfiguratorSample.Models
 {
@@ -117,7 +117,7 @@ namespace ConfiguratorSample.Models
                         new NotificationAction("Undo", id =>
                         {
                             statusCallback?.Invoke($"Undo clicked on toast #{id}!");
-                            Notifier.Notifier.ShowSuccess("Action Undone", "The operation was rolled back successfully.");
+                            SanketDeskNotifier.ShowSuccess("Action Undone", "The operation was rolled back successfully.");
                         }),
                         new NotificationAction("Dismiss", id =>
                         {
@@ -132,12 +132,12 @@ namespace ConfiguratorSample.Models
                         new NotificationAction("Accept", id =>
                         {
                             statusCallback?.Invoke($"Accepted toast #{id}.");
-                            Notifier.Notifier.ShowSuccess("Accepted", "Request confirmed.");
+                            SanketDeskNotifier.ShowSuccess("Accepted", "Request confirmed.");
                         }),
                         new NotificationAction("Decline", id =>
                         {
                             statusCallback?.Invoke($"Declined toast #{id}.");
-                            Notifier.Notifier.ShowWarning("Declined", "Request was rejected.");
+                            SanketDeskNotifier.ShowWarning("Declined", "Request was rejected.");
                         })
                     };
                     break;
@@ -152,7 +152,7 @@ namespace ConfiguratorSample.Models
                         new NotificationAction("Snooze (5m)", id =>
                         {
                             statusCallback?.Invoke($"Snoozed toast #{id}.");
-                            Notifier.Notifier.ShowInfo("Snoozed", "Alert snoozed for 5 minutes.");
+                            SanketDeskNotifier.ShowInfo("Snoozed", "Alert snoozed for 5 minutes.");
                         })
                     };
                     break;
@@ -170,7 +170,7 @@ namespace ConfiguratorSample.Models
             sb.AppendLine("// -------------------------------------------------------------");
             sb.AppendLine("// Trigger Toast Notification");
             sb.AppendLine("// -------------------------------------------------------------");
-            sb.AppendLine("using Notifier;");
+            sb.AppendLine("using SanketDesk;");
             sb.AppendLine();
 
             if (ActionPreset == ActionButtonPreset.None &&

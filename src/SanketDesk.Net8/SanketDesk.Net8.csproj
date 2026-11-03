@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <LangVersion>12.0</LangVersion>
+    <RootNamespace>SanketDesk</RootNamespace>
+    <AssemblyName>SanketDesk.Net8</AssemblyName>
+    <PackageId>SanketDesk.Net8</PackageId>
+    <Title>SanketDesk (.NET 8.0 Windows)</Title>
+    <Description>High-performance, pure Windows Forms desktop notification library, toast suite, and studio for .NET 8.0 Windows.</Description>
+    <PackageTags>sanketdesk;notifier;winforms;toast;notifications;desktop;windows;performance;burst</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SanketDesk.Shared\**\*.cs" LinkBase="Shared" />
+  </ItemGroup>
+</Project>

@@ -3,7 +3,7 @@ using System;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Notifier;
+using SanketDesk;
 
 namespace Net8Sample
 {
@@ -32,7 +32,7 @@ namespace Net8Sample
                 EnableFloatingIcon = true,
                 KeepFloatingIconOnAppDeactivate = false
             };
-            Notifier.Notifier.Initialize(config);
+            SanketDeskNotifier.Initialize(config);
 
             // Layout UI
             var titleLabel = new Label
@@ -57,19 +57,19 @@ namespace Net8Sample
             // Group 1: Basic Notifications
             var grpBasic = CreateGroupBox("Basic Notifications", 30, 90, 360, 160);
             AddButton(grpBasic, "Show Success", 20, 30, 145, 36, Color.FromArgb(40, 167, 69), () =>
-                Notifier.Notifier.ShowSuccess("Order Created", "Order #40921 has been placed successfully."));
+                SanketDeskNotifier.ShowSuccess("Order Created", "Order #40921 has been placed successfully."));
             AddButton(grpBasic, "Show Info", 185, 30, 145, 36, Color.FromArgb(23, 162, 184), () =>
-                Notifier.Notifier.ShowInfo("Sync Complete", "Database synchronizer finished processing 124 records."));
+                SanketDeskNotifier.ShowInfo("Sync Complete", "Database synchronizer finished processing 124 records."));
             AddButton(grpBasic, "Show Warning", 20, 80, 145, 36, Color.FromArgb(255, 179, 0), () =>
-                Notifier.Notifier.ShowWarning("Network Latency", "High round-trip latency detected on primary gateway."));
+                SanketDeskNotifier.ShowWarning("Network Latency", "High round-trip latency detected on primary gateway."));
             AddButton(grpBasic, "Show Error", 185, 80, 145, 36, Color.FromArgb(220, 53, 69), () =>
-                Notifier.Notifier.ShowError("Payment Failed", "Card authorization declined by issuing bank (Code: 51)."));
+                SanketDeskNotifier.ShowError("Payment Failed", "Card authorization declined by issuing bank (Code: 51)."));
             Controls.Add(grpBasic);
 
             // Group 2: Visual Template Families
             var grpTemplates = CreateGroupBox("Visual Template Families", 420, 90, 360, 230);
             AddButton(grpTemplates, "ModernCard", 20, 30, 145, 36, Color.FromArgb(75, 85, 99), () =>
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.ModernCard,
                     Type = NotificationType.Success,
@@ -77,7 +77,7 @@ namespace Net8Sample
                     Message = "Clean card with subtle shadow, status dot, and progress bar."
                 }));
             AddButton(grpTemplates, "MinimalBar", 185, 30, 145, 36, Color.FromArgb(75, 85, 99), () =>
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.MinimalBar,
                     Type = NotificationType.Info,
@@ -85,7 +85,7 @@ namespace Net8Sample
                     Message = "Compact bar with colored left accent line and inline layout."
                 }));
             AddButton(grpTemplates, "SolidAccent", 20, 75, 145, 36, Color.FromArgb(75, 85, 99), () =>
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.SolidAccent,
                     Type = NotificationType.Warning,
@@ -93,7 +93,7 @@ namespace Net8Sample
                     Message = "Vibrant full-color background with crisp white typography."
                 }));
             AddButton(grpTemplates, "SplitPill", 185, 75, 145, 36, Color.FromArgb(75, 85, 99), () =>
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.SplitPill,
                     Type = NotificationType.Error,
@@ -101,7 +101,7 @@ namespace Net8Sample
                     Message = "Two-tone card with solid left icon column and white body."
                 }));
             AddButton(grpTemplates, "ActionPrompt (Undo)", 20, 120, 310, 36, Color.FromArgb(37, 99, 235), () =>
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.ActionPrompt,
                     Type = NotificationType.Warning,
@@ -109,12 +109,12 @@ namespace Net8Sample
                     Message = "The file 'benchmark_results.csv' was moved to trash.",
                     Actions = new[]
                     {
-                        new NotificationAction("Undo", id => Notifier.Notifier.ShowSuccess("Restored", "File 'benchmark_results.csv' restored.")),
+                        new NotificationAction("Undo", id => SanketDeskNotifier.ShowSuccess("Restored", "File 'benchmark_results.csv' restored.")),
                         new NotificationAction("Dismiss", id => { })
                     }
                 }));
             AddButton(grpTemplates, "Windows Fluent", 20, 165, 310, 36, Color.FromArgb(30, 41, 59), () =>
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.WindowsFluent,
                     Type = NotificationType.Info,
@@ -124,7 +124,7 @@ namespace Net8Sample
                     Actions = new[]
                     {
                         new NotificationAction("Acknowledge", id => { }),
-                        new NotificationAction("Snooze", id => Notifier.Notifier.ShowInfo("Snoozed", "Reminder snoozed for 15 minutes."))
+                        new NotificationAction("Snooze", id => SanketDeskNotifier.ShowInfo("Snoozed", "Reminder snoozed for 15 minutes."))
                     }
                 }));
             Controls.Add(grpTemplates);
@@ -137,7 +137,7 @@ namespace Net8Sample
                 {
                     for (int i = 1; i <= 100; i++)
                     {
-                        Notifier.Notifier.Show(new AdvancedNotificationOptions
+                        SanketDeskNotifier.Show(new AdvancedNotificationOptions
                         {
                             Type = NotificationType.Warning,
                             Title = "Database Lock Warning",
@@ -153,7 +153,7 @@ namespace Net8Sample
                 {
                     Parallel.For(0, 10000, new ParallelOptions { MaxDegreeOfParallelism = 16 }, i =>
                     {
-                        Notifier.Notifier.Show(new AdvancedNotificationOptions
+                        SanketDeskNotifier.Show(new AdvancedNotificationOptions
                         {
                             Type = NotificationType.Info,
                             Title = "Audit Stream Event",
@@ -165,7 +165,7 @@ namespace Net8Sample
             });
             AddButton(grpBurst, "Debounce Delay (500ms)", 20, 120, 310, 36, () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Type = NotificationType.Info,
                     Title = "Search Query",
@@ -180,11 +180,11 @@ namespace Net8Sample
             // Group 4: Notification Center & Floating Icon Controls
             var grpUi = CreateGroupBox("Notification Center & Floating Icon", 420, 330, 360, 130);
             AddButton(grpUi, "Open Notification Center", 20, 30, 310, 36, Color.FromArgb(79, 70, 229), () =>
-                Notifier.Notifier.OpenNotificationCenter());
+                SanketDeskNotifier.OpenNotificationCenter());
             AddButton(grpUi, "Mark All as Read", 20, 75, 145, 36, Color.FromArgb(107, 114, 128), () =>
-                Notifier.Notifier.MarkAllAsRead());
+                SanketDeskNotifier.MarkAllAsRead());
             AddButton(grpUi, "Clear History", 185, 75, 145, 36, Color.FromArgb(220, 53, 69), () =>
-                Notifier.Notifier.ClearHistory());
+                SanketDeskNotifier.ClearHistory());
             Controls.Add(grpUi);
 
             // Status Bar
@@ -195,11 +195,11 @@ namespace Net8Sample
                 BackColor = Color.FromArgb(229, 231, 235),
                 TextAlign = ContentAlignment.MiddleLeft,
                 Padding = new Padding(20, 0, 0, 0),
-                Text = $"Ready | Unread Count: {Notifier.Notifier.UnreadCount} | Status: Engine Active"
+                Text = $"Ready | Unread Count: {SanketDeskNotifier.UnreadCount} | Status: Engine Active"
             };
             Controls.Add(_statusLabel);
 
-            Notifier.Notifier.History.UnreadCountChanged += count =>
+            SanketDeskNotifier.History.UnreadCountChanged += count =>
             {
                 if (IsHandleCreated && !IsDisposed)
                 {
@@ -250,7 +250,7 @@ namespace Net8Sample
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            Notifier.Notifier.Dispose();
+            SanketDeskNotifier.Dispose();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using ConfiguratorSample.Models;
-using Notifier;
+using SanketDesk;
 
 namespace ConfiguratorSample.Forms
 {
@@ -284,19 +284,19 @@ namespace ConfiguratorSample.Forms
             sb.AppendLine("// STEP 1: Add Reference to your Project");
             if (isNet8)
             {
-                sb.AppendLine("// In your .csproj file, add reference to Notifier.Net8.dll or project:");
+                sb.AppendLine("// In your .csproj file, add reference to SanketDesk.Net8.dll or project:");
                 sb.AppendLine("// <ItemGroup>");
                 sb.AppendLine("//   <Reference Include=\"Notifier.Net8\">");
-                sb.AppendLine("//     <HintPath>path\\to\\Notifier.Net8.dll</HintPath>");
+                sb.AppendLine("//     <HintPath>path\\to\\SanketDesk.Net8.dll</HintPath>");
                 sb.AppendLine("//   </Reference>");
                 sb.AppendLine("// </ItemGroup>");
             }
             else
             {
-                sb.AppendLine("// In your .csproj or References in Visual Studio, add reference to Notifier.NetFramework.dll:");
+                sb.AppendLine("// In your .csproj or References in Visual Studio, add reference to SanketDesk.NetFramework.dll:");
                 sb.AppendLine("// <ItemGroup>");
                 sb.AppendLine("//   <Reference Include=\"Notifier.NetFramework\">");
-                sb.AppendLine("//     <HintPath>path\\to\\Notifier.NetFramework.dll</HintPath>");
+                sb.AppendLine("//     <HintPath>path\\to\\SanketDesk.NetFramework.dll</HintPath>");
                 sb.AppendLine("//   </Reference>");
                 sb.AppendLine("// </ItemGroup>");
             }
@@ -304,7 +304,7 @@ namespace ConfiguratorSample.Forms
             sb.AppendLine("// STEP 2: Configure and Initialize Notifier in your Main Form");
             sb.AppendLine("using System;");
             sb.AppendLine("using System.Windows.Forms;");
-            sb.AppendLine("using Notifier;");
+            sb.AppendLine("using SanketDesk;");
             sb.AppendLine();
             sb.AppendLine("public class MainForm : Form");
             sb.AppendLine("{");
@@ -382,7 +382,7 @@ namespace ConfiguratorSample.Forms
             sb.AppendLine("// -------------------------------------------------------------");
             sb.AppendLine("// Basic Notification API (Zero-Boilerplate, Thread-Safe)");
             sb.AppendLine("// -------------------------------------------------------------");
-            sb.AppendLine("using Notifier;");
+            sb.AppendLine("using SanketDesk;");
             sb.AppendLine();
             sb.AppendLine("// Success Notification");
             sb.AppendLine("Notifier.ShowSuccess(\"Order Created\", \"Order #40921 has been placed successfully.\");");
@@ -411,7 +411,7 @@ namespace ConfiguratorSample.Forms
             sb.AppendLine("// -------------------------------------------------------------");
             sb.AppendLine("// Safe Deadlock-Free Teardown & Disposal");
             sb.AppendLine("// -------------------------------------------------------------");
-            sb.AppendLine("using Notifier;");
+            sb.AppendLine("using SanketDesk;");
             sb.AppendLine();
             sb.AppendLine("// In your Main Form's OnFormClosing or FormClosing event:");
             sb.AppendLine("protected override void OnFormClosing(FormClosingEventArgs e)");

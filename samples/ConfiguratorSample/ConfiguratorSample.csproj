@@ -17,10 +17,10 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
-    <ProjectReference Include="..\..\src\Notifier.Net8\Notifier.Net8.csproj" />
+    <ProjectReference Include="..\..\src\SanketDesk.Net8\SanketDesk.Net8.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
-    <ProjectReference Include="..\..\src\Notifier.NetFramework\Notifier.NetFramework.csproj" />
+    <ProjectReference Include="..\..\src\SanketDesk.NetFramework\SanketDesk.NetFramework.csproj" />
   </ItemGroup>
 </Project>

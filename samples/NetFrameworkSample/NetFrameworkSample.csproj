@@ -12,6 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Notifier.NetFramework\Notifier.NetFramework.csproj" />
+    <ProjectReference Include="..\..\src\SanketDesk.NetFramework\SanketDesk.NetFramework.csproj" />
   </ItemGroup>
 </Project>

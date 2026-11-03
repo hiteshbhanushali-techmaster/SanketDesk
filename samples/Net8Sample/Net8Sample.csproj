@@ -7,6 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Notifier.Net8\Notifier.Net8.csproj" />
+    <ProjectReference Include="..\..\src\SanketDesk.Net8\SanketDesk.Net8.csproj" />
   </ItemGroup>
 </Project>

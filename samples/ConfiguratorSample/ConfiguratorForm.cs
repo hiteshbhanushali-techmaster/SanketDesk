@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ConfiguratorSample.Forms;
 using ConfiguratorSample.Models;
-using Notifier;
+using SanketDesk;
 
 namespace ConfiguratorSample
 {
@@ -145,13 +145,13 @@ namespace ConfiguratorSample
             try
             {
                 var config = _configSettings.ToNotificationConfig(this);
-                if (Notifier.Notifier.IsInitialized)
+                if (SanketDeskNotifier.IsInitialized)
                 {
-                    Notifier.Notifier.Reinitialize(config);
+                    SanketDeskNotifier.Reinitialize(config);
                 }
                 else
                 {
-                    Notifier.Notifier.Initialize(config);
+                    SanketDeskNotifier.Initialize(config);
                 }
             }
             catch (Exception ex)
@@ -341,22 +341,22 @@ namespace ConfiguratorSample
             var grpBasic = CreateCardBox("1. Basic Notifications (Built-in Types)", 16, y, cardWidth, 100);
             AddButton(grpBasic, "Show Success", 16, 32, 150, 40, Color.FromArgb(16, 185, 129), () =>
             {
-                Notifier.Notifier.ShowSuccess("Operation Successful", "Changes were committed to the primary replica.");
+                SanketDeskNotifier.ShowSuccess("Operation Successful", "Changes were committed to the primary replica.");
                 LogEvent("Triggered Success Toast");
             });
             AddButton(grpBasic, "Show Info", 176, 32, 150, 40, Color.FromArgb(14, 165, 233), () =>
             {
-                Notifier.Notifier.ShowInfo("Sync In Progress", "124 batch items processed successfully.");
+                SanketDeskNotifier.ShowInfo("Sync In Progress", "124 batch items processed successfully.");
                 LogEvent("Triggered Info Toast");
             });
             AddButton(grpBasic, "Show Warning", 336, 32, 150, 40, Color.FromArgb(245, 158, 11), () =>
             {
-                Notifier.Notifier.ShowWarning("Disk Space Alert", "Volume C: has dropped below 15% free space.");
+                SanketDeskNotifier.ShowWarning("Disk Space Alert", "Volume C: has dropped below 15% free space.");
                 LogEvent("Triggered Warning Toast");
             });
             AddButton(grpBasic, "Show Error", 496, 32, 150, 40, Color.FromArgb(239, 68, 68), () =>
             {
-                Notifier.Notifier.ShowError("Connection Aborted", "Unable to establish socket to host server.");
+                SanketDeskNotifier.ShowError("Connection Aborted", "Unable to establish socket to host server.");
                 LogEvent("Triggered Error Toast");
             });
             scrollPanel.Controls.Add(grpBasic);
@@ -366,7 +366,7 @@ namespace ConfiguratorSample
             var grpTemplates = CreateCardBox("2. Visual Template Gallery (6 Built-in Styles)", 16, y, cardWidth, 145);
             AddButton(grpTemplates, "ModernCard", 16, 30, 205, 36, Color.FromArgb(51, 65, 85), () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.ModernCard,
                     Type = NotificationType.Success,
@@ -377,7 +377,7 @@ namespace ConfiguratorSample
             });
             AddButton(grpTemplates, "MinimalBar", 231, 30, 205, 36, Color.FromArgb(51, 65, 85), () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.MinimalBar,
                     Type = NotificationType.Info,
@@ -388,7 +388,7 @@ namespace ConfiguratorSample
             });
             AddButton(grpTemplates, "SolidAccent", 446, 30, 205, 36, Color.FromArgb(51, 65, 85), () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.SolidAccent,
                     Type = NotificationType.Warning,
@@ -400,7 +400,7 @@ namespace ConfiguratorSample
 
             AddButton(grpTemplates, "SplitPill", 16, 78, 205, 36, Color.FromArgb(51, 65, 85), () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.SplitPill,
                     Type = NotificationType.Error,
@@ -411,7 +411,7 @@ namespace ConfiguratorSample
             });
             AddButton(grpTemplates, "ActionPrompt", 231, 78, 205, 36, Color.FromArgb(37, 99, 235), () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.ActionPrompt,
                     Type = NotificationType.Warning,
@@ -419,7 +419,7 @@ namespace ConfiguratorSample
                     Message = "Moved 'document_v2.pdf' to trash.",
                     Actions = new[]
                     {
-                        new NotificationAction("Undo", id => Notifier.Notifier.ShowSuccess("Restored", "File restored.")),
+                        new NotificationAction("Undo", id => SanketDeskNotifier.ShowSuccess("Restored", "File restored.")),
                         new NotificationAction("Dismiss", id => { })
                     }
                 });
@@ -427,7 +427,7 @@ namespace ConfiguratorSample
             });
             AddButton(grpTemplates, "Windows Fluent", 446, 78, 205, 36, Color.FromArgb(15, 23, 42), () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Template = NotificationTemplateNames.WindowsFluent,
                     Type = NotificationType.Info,
@@ -457,7 +457,7 @@ namespace ConfiguratorSample
             btnFireCustom.Click += (s, e) =>
             {
                 var options = _toastOptions.ToAdvancedNotificationOptions(msg => LogEvent(msg));
-                Notifier.Notifier.Show(options);
+                SanketDeskNotifier.Show(options);
                 LogEvent($"Fired Custom Toast #{_customToastCounter++} ('{options.Title}')");
             };
             grpCustom.Controls.Add(btnFireCustom);
@@ -472,7 +472,7 @@ namespace ConfiguratorSample
                 {
                     for (int i = 1; i <= 10; i++)
                     {
-                        Notifier.Notifier.Show(new AdvancedNotificationOptions
+                        SanketDeskNotifier.Show(new AdvancedNotificationOptions
                         {
                             Type = NotificationType.Warning,
                             Title = "Database Lock Contention",
@@ -489,7 +489,7 @@ namespace ConfiguratorSample
                 {
                     Parallel.For(0, 1000, new ParallelOptions { MaxDegreeOfParallelism = 8 }, i =>
                     {
-                        Notifier.Notifier.Show(new AdvancedNotificationOptions
+                        SanketDeskNotifier.Show(new AdvancedNotificationOptions
                         {
                             Type = NotificationType.Info,
                             Title = "Telemetry Stream",
@@ -502,7 +502,7 @@ namespace ConfiguratorSample
             });
             AddButton(grpBurst, "Debounce Test (Click Fast)", 446, 30, 205, 38, Color.FromArgb(79, 70, 229), () =>
             {
-                Notifier.Notifier.Show(new AdvancedNotificationOptions
+                SanketDeskNotifier.Show(new AdvancedNotificationOptions
                 {
                     Type = NotificationType.Info,
                     Title = "Search Query",
@@ -520,17 +520,17 @@ namespace ConfiguratorSample
             var grpCenter = CreateCardBox("5. Notification Center & Floating Icon", 16, y, cardWidth, 90);
             AddButton(grpCenter, "Toggle History Center", 16, 30, 150, 38, Color.FromArgb(79, 70, 229), () =>
             {
-                Notifier.Notifier.ToggleNotificationCenter();
+                SanketDeskNotifier.ToggleNotificationCenter();
                 LogEvent("Toggled Notification Center window");
             });
             AddButton(grpCenter, "Mark All as Read", 176, 30, 150, 38, Color.FromArgb(100, 116, 139), () =>
             {
-                Notifier.Notifier.MarkAllAsRead();
+                SanketDeskNotifier.MarkAllAsRead();
                 LogEvent("Marked all history notifications as read");
             });
             AddButton(grpCenter, "Clear History", 336, 30, 150, 38, Color.FromArgb(220, 38, 38), () =>
             {
-                Notifier.Notifier.ClearHistory();
+                SanketDeskNotifier.ClearHistory();
                 LogEvent("Cleared history storage");
             });
             AddButton(grpCenter, "Toggle Icon Visible", 496, 30, 150, 38, Color.FromArgb(71, 85, 105), () =>
@@ -566,9 +566,9 @@ namespace ConfiguratorSample
             try
             {
                 var config = _configSettings.ToNotificationConfig(this);
-                Notifier.Notifier.Reinitialize(config);
+                SanketDeskNotifier.Reinitialize(config);
 
-                _statusLabel.Text = $"Engine Active | Position: {_configSettings.Position} | Template: {_configSettings.DefaultTemplate} | Unread: {Notifier.Notifier.UnreadCount}";
+                _statusLabel.Text = $"Engine Active | Position: {_configSettings.Position} | Template: {_configSettings.DefaultTemplate} | Unread: {SanketDeskNotifier.UnreadCount}";
                 LogEvent("Configuration successfully applied and engine re-initialized.");
             }
             catch (Exception ex)
@@ -613,9 +613,9 @@ namespace ConfiguratorSample
 
         private void AttachHistoryEvents()
         {
-            if (Notifier.Notifier.IsInitialized)
+            if (SanketDeskNotifier.IsInitialized)
             {
-                Notifier.Notifier.History.UnreadCountChanged += count =>
+                SanketDeskNotifier.History.UnreadCountChanged += count =>
                 {
                     if (IsHandleCreated && !IsDisposed)
                     {
@@ -673,7 +673,7 @@ namespace ConfiguratorSample
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            Notifier.Notifier.Dispose();
+            SanketDeskNotifier.Dispose();
         }
     }
 }

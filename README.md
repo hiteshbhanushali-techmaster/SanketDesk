@@ -105,8 +105,8 @@ flowchart TD
 
 | Package | Assembly | Target Framework | Compatibility |
 |---|---|---|---|
-| `SanketDesk.Net8` | `Notifier.Net8.dll` | `net8.0-windows` | Windows 10/11, Windows Server 2019/2022+ (.NET 8.0+) |
-| `SanketDesk.NetFramework` | `Notifier.NetFramework.dll` | `net461` | Windows 7 SP1, 8.1, 10, 11, Server 2012R2+ (.NET Fx 4.6.1+) |
+| `SanketDesk.Net8` | `SanketDesk.Net8.dll` | `net8.0-windows` | Windows 10/11, Windows Server 2019/2022+ (.NET 8.0+) |
+| `SanketDesk.NetFramework` | `SanketDesk.NetFramework.dll` | `net461` | Windows 7 SP1, 8.1, 10, 11, Server 2012R2+ (.NET Fx 4.6.1+) |
 
 ---
 
@@ -136,7 +136,7 @@ Install-Package SanketDesk.Net8 -Version 1.0.0
 Initialize SanketDesk once during main form initialization or application startup:
 
 ```csharp
-using Notifier;
+using SanketDesk;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -249,7 +249,7 @@ Benchmarks executed on a 16-core workstation in `Release` configuration:
 
 To reproduce benchmarks on your machine:
 ```powershell
-dotnet run --project benchmarks/Notifier.Benchmarks/Notifier.Benchmarks.csproj -c Release
+dotnet run --project benchmarks/SanketDesk.Benchmarks/SanketDesk.Benchmarks.csproj -c Release
 ```
 
 ---

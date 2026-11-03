@@ -28,16 +28,16 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore Notifier.sln
+        run: dotnet restore SanketDesk.sln
 
       - name: Build solution (Release)
-        run: dotnet build Notifier.sln --configuration Release --no-restore
+        run: dotnet build SanketDesk.sln --configuration Release --no-restore
 
       - name: Run automated tests
-        run: dotnet test tests/Notifier.Tests/Notifier.Tests.csproj --configuration Release --no-build --verbosity normal
+        run: dotnet test tests/SanketDesk.Tests/SanketDesk.Tests.csproj --configuration Release --no-build --verbosity normal
 
       - name: Build NuGet packages
-        run: dotnet pack Notifier.sln --configuration Release --no-build --output artifacts
+        run: dotnet pack SanketDesk.sln --configuration Release --no-build --output artifacts
 
       - name: Exchange GitHub OIDC token for NuGet key
         uses: NuGet/login@v1

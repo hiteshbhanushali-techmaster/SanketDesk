@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Notifier;
+using SanketDesk;
 
 namespace ConfiguratorSample.Models
 {
@@ -213,7 +213,7 @@ namespace ConfiguratorSample.Models
             sb.AppendLine("// -------------------------------------------------------------");
             sb.AppendLine($"// Notifier Configuration (Targeting {(isNet8 ? ".NET 8.0 Windows" : ".NET Framework 4.6.1+")})");
             sb.AppendLine("// -------------------------------------------------------------");
-            sb.AppendLine("using Notifier;");
+            sb.AppendLine("using SanketDesk;");
             sb.AppendLine();
             sb.AppendLine("// In your main Form's constructor or Form_Load event:");
             sb.AppendLine("var config = new NotificationConfig");

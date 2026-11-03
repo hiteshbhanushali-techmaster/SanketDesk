@@ -9,7 +9,7 @@ An exhaustive technical summary of the architecture, subsystems, features, perfo
 The **Notifier** library is a high-performance, commercial-grade notification suite and background scheduling engine designed and built **exclusively using pure Windows Forms (GDI+)** for Windows desktop applications.
 
 ### Core Tenets
-- **Zero Third-Party Runtime Dependencies**: Pure standalone library producing a single deployable assembly (`Notifier.Net8.dll` or `Notifier.NetFramework.dll`) with zero external DLL or native binary requirements.
+- **Zero Third-Party Runtime Dependencies**: Pure standalone library producing a single deployable assembly (`SanketDesk.Net8.dll` or `SanketDesk.NetFramework.dll`) with zero external DLL or native binary requirements.
 - **Pure Windows Forms**: Built completely without WPF, Avalonia, Electron, MAUI, WebViews, or JavaScript runtimes.
 - **Dual Runtime Support**:
   - **.NET 8.0 Windows (`net8.0-windows`)** for modern desktop applications.
@@ -34,8 +34,8 @@ Notifier.sln
 │   │   ├── Native/                   # Windows 10/11 WinRT toast & Shell NotifyIcon fallback
 │   │   ├── Templates/                # 6 built-in GDI+ template renderers + Vector icon engine
 │   │   └── UI/                       # ToastWindow, ActiveToastManager, FloatingIcon, NotificationCenter
-│   ├── Notifier.NetFramework/         # .NET Framework 4.6.1 consumer project -> Notifier.NetFramework.dll
-│   └── Notifier.Net8/                 # .NET 8 Windows consumer project -> Notifier.Net8.dll
+│   ├── Notifier.NetFramework/         # .NET Framework 4.6.1 consumer project -> SanketDesk.NetFramework.dll
+│   └── Notifier.Net8/                 # .NET 8 Windows consumer project -> SanketDesk.Net8.dll
 ├── tests/
 │   └── Notifier.Tests/                # 16 automated MSTest tests (Stress, UI, Concurrency, Retention)
 ├── benchmarks/
@@ -246,7 +246,7 @@ The automated test suite (`tests/Notifier.Tests`) contains **16 passed automated
 | Capability | Status | Implementation Details |
 | :--- | :--- | :--- |
 | **Pure Windows Forms** | Complete | GDI+ double-buffered rendering, zero foreign UI frameworks. |
-| **Multi-Targeting** | Complete | Compiles to `Notifier.Net8.dll` (.NET 8) and `Notifier.NetFramework.dll` (.NET Framework 4.6.1). |
+| **Multi-Targeting** | Complete | Compiles to `SanketDesk.Net8.dll` (.NET 8) and `SanketDesk.NetFramework.dll` (.NET Framework 4.6.1). |
 | **Burst Admission Control** | Complete | Bounded admission controller handling up to 1,800,000 ops/sec. |
 | **Zero Idle CPU** | Complete | Single shared timer architecture that halts completely when inactive. |
 | **Priority Processing** | Complete | Strict non-aging priority mode (`Error > Warning > Info > Success`) + Equal FIFO mode. |

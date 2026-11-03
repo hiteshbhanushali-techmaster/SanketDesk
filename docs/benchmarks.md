@@ -16,7 +16,7 @@ This document outlines the performance benchmarks, methodology, test execution c
 
 Run the benchmark suite locally with:
 ```powershell
-dotnet run --project benchmarks/Notifier.Benchmarks/Notifier.Benchmarks.csproj -c Release
+dotnet run --project benchmarks/SanketDesk.Benchmarks/SanketDesk.Benchmarks.csproj -c Release
 ```
 
 ### Raw Benchmark Measurements
