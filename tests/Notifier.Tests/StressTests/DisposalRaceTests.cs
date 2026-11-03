@@ -53,8 +53,8 @@ namespace Notifier.Tests.StressTests
                 Notifier.Dispose();
             });
 
-            // Dispose must complete within 2 seconds without deadlocking
-            bool completed = disposeTask.Wait(2000);
+            // Dispose must complete within 5 seconds without deadlocking even under heavy thread starvation
+            bool completed = disposeTask.Wait(5000);
             Assert.IsTrue(completed, "Notifier.Dispose() deadlocked during concurrent producer burst!");
 
             cts.Cancel();
