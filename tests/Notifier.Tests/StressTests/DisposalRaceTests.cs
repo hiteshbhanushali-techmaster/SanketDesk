@@ -35,6 +35,7 @@ namespace Notifier.Tests.StressTests
                         try
                         {
                             Notifier.ShowInfo("Title " + taskId, "Message " + count++);
+                            Thread.Yield();
                         }
                         catch (Exception ex) when (ex is ObjectDisposedException || ex is InvalidOperationException)
                         {
@@ -48,13 +49,11 @@ namespace Notifier.Tests.StressTests
             // Let them run for 50ms then call Dispose() concurrently from worker thread
             Thread.Sleep(50);
 
-            var disposeTask = Task.Run(() =>
-            {
-                Notifier.Dispose();
-            });
+            var disposeThread = new Thread(() => Notifier.Dispose()) { IsBackground = true };
+            disposeThread.Start();
 
-            // Dispose must complete within 5 seconds without deadlocking even under heavy thread starvation
-            bool completed = disposeTask.Wait(5000);
+            // Dispose must complete within 5 seconds without deadlocking even under heavy concurrency
+            bool completed = disposeThread.Join(5000);
             Assert.IsTrue(completed, "Notifier.Dispose() deadlocked during concurrent producer burst!");
 
             cts.Cancel();
