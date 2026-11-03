@@ -1,0 +1,21 @@
+# SanketDesk — Complete Technical Reference for Coding Agents & LLMs
+
+## Overview
+SanketDesk is a high-throughput, pure Windows Forms desktop notification suite providing toast rendering, in-place burst coalescing, floating badges, notification history, and a visual PropertyGrid configurator studio for Windows desktop applications.
+
+## Solution Projects
+- `Notifier.Net8`: .NET 8.0 Windows desktop assembly (`SanketDesk.Net8.dll`).
+- `Notifier.NetFramework`: .NET Framework 4.6.1 desktop assembly (`SanketDesk.NetFramework.dll`).
+- `Notifier.Shared`: Multi-targeted C# shared core (Contracts, Engine, History, Models, Native, Templates, UI).
+- `Notifier.Tests`: Automated unit and concurrency test suite (MSTest).
+- `Notifier.Benchmarks`: Automated performance and GC benchmark runner.
+- `ConfiguratorSample`: Interactive WinForms PropertyGrid studio and code generator.
+
+## Core API Reference
+- `Notifier.Initialize(NotificationConfig config)`: Freezes configuration and starts the engine.
+- `Notifier.Show(AdvancedNotificationOptions options)`: Submits a notification with actions, custom template, and duration.
+- `Notifier.ShowSuccess(string title, string message)`: Quick success toast.
+- `Notifier.ShowInfo(string title, string message)`: Quick info toast.
+- `Notifier.ShowWarning(string title, string message)`: Quick warning toast.
+- `Notifier.ShowError(string title, string message)`: Quick error toast.
+- `Notifier.Dispose()`: Shuts down scheduler clock and drains UI forms idempotently.

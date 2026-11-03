@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>10.0</LangVersion>
+    <RootNamespace>Notifier</RootNamespace>
+    <AssemblyName>Notifier.NetFramework</AssemblyName>
+    <PackageId>SanketDesk.NetFramework</PackageId>
+    <Title>SanketDesk (.NET Framework 4.6.1)</Title>
+    <Description>High-performance, pure Windows Forms desktop notification library, toast suite, and studio for .NET Framework 4.6.1.</Description>
+    <PackageTags>sanketdesk;notifier;winforms;toast;notifications;desktop;windows;performance;burst;netframework</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Notifier.Shared\**\*.cs" LinkBase="Shared" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+</Project>

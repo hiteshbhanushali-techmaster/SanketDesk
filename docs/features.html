@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SanketDesk Features — Complete Feature Catalog</title>
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/sanketdesk-icon-128.png">
+  <style>
+    :root { color-scheme: dark; --bg:#0b1020; --panel:#121a30; --line:#1e293b; --text:#edf4ff; --muted:#94a3b8; --cyan:#06b6d4; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif }
+    .wrap { width:min(1080px,calc(100% - 36px)); margin:auto; padding:40px 0 }
+    a { color:var(--cyan) }
+    nav { display:flex; justify-content:space-between; margin-bottom:40px; border-bottom:1px solid var(--line); padding-bottom:20px }
+    .card { padding:24px; background:var(--panel); border:1px solid var(--line); border-radius:12px; margin-bottom:20px }
+    h2 { color:var(--cyan); margin-top:0 }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" style="font-weight:700; text-decoration:none; color:#fff">&larr; Back to SanketDesk</a>
+      <div><a href="questions.html">FAQ</a> | <a href="https://github.com/hiteshbhanushali-techmaster/SanketDesk">GitHub</a></div>
+    </nav>
+    <h1>SanketDesk Feature Guide</h1>
+    <div class="card">
+      <h2>1. Pure Windows Forms Architecture</h2>
+      <p>Zero external DLL dependencies. Single standalone assembly per runtime target with no WPF, MAUI, Avalonia, or Chromium runtime baggage.</p>
+    </div>
+    <div class="card">
+      <h2>2. Lock-Free Bounded Admission Controller</h2>
+      <p>Thousands of concurrent producer threads submit alerts without blocking UI loops. Fast-path atomic CAS operations manage burst capacity.</p>
+    </div>
+    <div class="card">
+      <h2>3. Single Coordinated Clock</h2>
+      <p>No per-toast timers. A centralized animation coordinator ticks only during active transitions and drops to 0.0% CPU when idle.</p>
+    </div>
+    <div class="card">
+      <h2>4. 6 Built-in GDI+ Visual Templates</h2>
+      <p>ModernCard, MinimalBar, SolidAccent, SplitPill, ActionPrompt, and WindowsFluent with vector status glyphs and crisp DPI scaling.</p>
+    </div>
+    <div class="card">
+      <h2>5. Interactive PropertyGrid Configurator Studio</h2>
+      <p>Full desktop designer with live PropertyGrid control inspection, real-time previewing, and automated C# initialization code generation.</p>
+    </div>
+  </div>
+</body>
+</html>

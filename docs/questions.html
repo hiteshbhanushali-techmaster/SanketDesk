@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SanketDesk FAQ &amp; Common Questions</title>
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/sanketdesk-icon-128.png">
+  <style>
+    :root { color-scheme: dark; --bg:#0b1020; --panel:#121a30; --line:#1e293b; --text:#edf4ff; --muted:#94a3b8; --cyan:#06b6d4; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif }
+    .wrap { width:min(1080px,calc(100% - 36px)); margin:auto; padding:40px 0 }
+    a { color:var(--cyan) }
+    nav { display:flex; justify-content:space-between; margin-bottom:40px; border-bottom:1px solid var(--line); padding-bottom:20px }
+    .qa { padding:20px; background:var(--panel); border:1px solid var(--line); border-radius:12px; margin-bottom:16px }
+    h3 { margin-top:0; color:var(--cyan) }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" style="font-weight:700; text-decoration:none; color:#fff">&larr; Back to SanketDesk</a>
+      <div><a href="features.html">Features</a> | <a href="https://github.com/hiteshbhanushali-techmaster/SanketDesk">GitHub</a></div>
+    </nav>
+    <h1>Frequently Asked Questions</h1>
+    <div class="qa">
+      <h3>Why Pure Windows Forms?</h3>
+      <p>Windows Forms requires no external frameworks, adds zero MB of runtime dependencies, has minimal startup latency, and runs universally across Windows 7 SP1 through Windows 11 and Windows Server editions.</p>
+    </div>
+    <div class="qa">
+      <h3>Does it wake the CPU when no alerts are shown?</h3>
+      <p>No. The single animation clock stops completely when all toasts are dismissed. CPU usage is strictly 0.0%.</p>
+    </div>
+    <div class="qa">
+      <h3>What happens during high burst alerts?</h3>
+      <p>Under burst storms, <code>BurstStrategy.CoalesceByKey</code> updates the duplicate toast in-place to <code>Title (N)</code> without UI flashing, stacking, or allocating new form handles.</p>
+    </div>
+  </div>
+</body>
+</html>

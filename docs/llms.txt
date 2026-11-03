@@ -1,0 +1,33 @@
+# SanketDesk
+
+> High-performance, pure Windows Forms desktop notification library, toast engine, and interactive studio for .NET 8.0 Windows and .NET Framework 4.6.1.
+
+## Key Information
+- Pure Windows Forms (GDI+), zero external runtime DLL dependencies.
+- Multi-targets `net8.0-windows` and `net461`.
+- Single coordinated clock (0% CPU when idle); zero per-toast timers.
+- Bounded admission controller with lock-free counters for 10k+ burst handling.
+- Deterministic coalescing (`CoalesceByKey`, `CoalesceByTitle`).
+- Interactive PropertyGrid configurator studio in `samples/ConfiguratorSample`.
+
+## Quick Start
+```csharp
+using Notifier;
+
+// 1. Initialize once
+Notifier.Initialize(new NotificationConfig
+{
+    HostForm = this,
+    Position = NotificationPosition.BottomRight,
+    BurstStrategy = BurstStrategy.CoalesceByKey
+});
+
+// 2. Show toasts safely from any thread
+Notifier.ShowSuccess("Connected", "Feed active.");
+Notifier.ShowError("Rejected", "Order breached risk limit.");
+```
+
+## Documentation Links
+- Full Guide: https://hiteshbhanushali-techmaster.github.io/SanketDesk/
+- Architecture: https://github.com/hiteshbhanushali-techmaster/SanketDesk/blob/main/docs/architecture.md
+- Full Reference: https://github.com/hiteshbhanushali-techmaster/SanketDesk/blob/main/docs/llms-full.txt
